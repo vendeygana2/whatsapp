@@ -3,297 +3,157 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Generador de Mensajes para Cuentas</title>
+    <title>GENERADOR DE MENSAJE DE WHATSAPP DE CUENTAS</title>
     <style>
-        :root {
-            --primary-color: #25D366;
-            --secondary-color: #128C7E;
-            --dark-color: #075E54;
-            --light-color: #DCF8C6;
-            --text-color: #333;
-            --bg-color: #f5f5f5;
-        }
-        
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        }
-        
         body {
-            background-color: var(--bg-color);
-            color: var(--text-color);
-            line-height: 1.6;
-            padding: 20px;
+            font-family: sans-serif;
+            margin: 20px;
         }
-        
         .container {
-            max-width: 800px;
+            max-width: 600px;
             margin: 0 auto;
-            background: white;
-            padding: 25px;
-            border-radius: 10px;
-            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+            text-align: center; /* Centrar el contenedor */
         }
-        
-        h1 {
-            color: var(--dark-color);
-            text-align: center;
-            margin-bottom: 20px;
-        }
-        
-        .form-group {
-            margin-bottom: 20px;
-        }
-        
-        label {
-            display: block;
-            margin-bottom: 8px;
-            font-weight: bold;
-            color: var(--dark-color);
-        }
-        
-        input, textarea, select {
-            width: 100%;
-            padding: 12px;
-            border: 1px solid #ddd;
-            border-radius: 5px;
-            font-size: 16px;
-            transition: border 0.3s;
-        }
-        
-        input:focus, textarea:focus, select:focus {
-            border-color: var(--primary-color);
-            outline: none;
-        }
-        
-        textarea {
-            min-height: 150px;
-            resize: vertical;
-        }
-        
-        .btn {
-            display: inline-block;
-            background-color: var(--primary-color);
-            color: white;
-            border: none;
-            padding: 12px 20px;
-            font-size: 16px;
-            cursor: pointer;
-            border-radius: 5px;
-            transition: background-color 0.3s;
-            text-align: center;
-            margin-right: 10px;
+        .header-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
             margin-bottom: 10px;
         }
-        
-        .btn:hover {
-            background-color: var(--secondary-color);
+        .header-container img {
+            max-height: 50px; /* Ajusta el tamaño de los logos */
+            margin: 0 10px; /* Espacio entre los logos y el título */
         }
-        
-        .btn-whatsapp {
-            background-color: var(--dark-color);
+        h2 {
+            margin-top: 0;
         }
-        
-        .btn-whatsapp:hover {
-            background-color: var(--secondary-color);
+        textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            box-sizing: border-box;
+            border: 1px solid #ccc;
+            border-radius: 4px;
         }
-        
-        .buttons-container {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
+        button {
+            padding: 10px 20px;
+            background-color: #25D366; /* Color verde de WhatsApp */
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        button:hover {
+            background-color: #128C7E; /* Verde más oscuro al pasar el mouse */
+        }
+        #mensaje-generado {
+            white-space: pre-wrap; /* Respeta los saltos de línea */
             margin-top: 20px;
+            padding: 15px;
+            border: 1px solid #eee;
+            border-radius: 4px;
+            background-color: #f9f9f9;
+            text-align: left; /* Alinear el texto del mensaje a la izquierda */
         }
-        
-        .result-container {
-            margin-top: 30px;
-            padding: 20px;
-            background-color: var(--light-color);
-            border-radius: 5px;
-            border-left: 5px solid var(--primary-color);
-            white-space: pre-line;
-        }
-        
-        .result-title {
-            color: var(--dark-color);
-            margin-bottom: 15px;
-            text-align: center;
-        }
-        
-        @media (max-width: 600px) {
-            .container {
-                padding: 15px;
-            }
-            
-            .btn {
-                width: 100%;
-                margin-right: 0;
-            }
+        #frase-motivacional {
+            margin-top: 15px;
+            font-style: italic;
+            color: #555;
+            text-align: center; /* Centrar la frase motivacional */
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <h1>Generador de Mensajes para Cuentas</h1>
-        
-        <div class="form-group">
-            <label for="service">Servicio:</label>
-            <select id="service">
-                <option value="Netflix">Netflix</option>
-                <option value="Amazon Prime">Amazon Prime</option>
-                <option value="Disney+">Disney+</option>
-                <option value="HBO Max">HBO Max</option>
-                <option value="Spotify">Spotify</option>
-                <option value="YouTube Premium">YouTube Premium</option>
-                <option value="Otro">Otro</option>
-            </select>
+        <div class="header-container">
+            <img src="https://www.vendeygana.net/assets/img/logo-1.png" alt="Logo Vende y Gana">
+            <h2>GENERADOR DE MENSAJE DE WHATSAPP DE CUENTAS</h2>
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6b/WhatsApp.svg/2044px-WhatsApp.svg.png" alt="Logo WhatsApp">
         </div>
-        
-        <div class="form-group" id="custom-service-group" style="display: none;">
-            <label for="custom-service">Especificar servicio:</label>
-            <input type="text" id="custom-service" placeholder="Escribe el nombre del servicio">
-        </div>
-        
-        <div class="form-group">
-            <label for="account-data">Datos de la cuenta (usuario y contraseña):</label>
-            <textarea id="account-data" placeholder="Ejemplo: 
-usuario: ejemplo@gmail.com 
-contraseña: Clave1234"></textarea>
-        </div>
-        
-        <div class="buttons-container">
-            <button id="generate-btn" class="btn">Generar Mensaje</button>
-        </div>
-        
-        <div class="result-container" id="result-container" style="display: none;">
-            <h3 class="result-title">MENSAJE GENERADO</h3>
-            <div id="generated-message"></div>
-            <div class="buttons-container">
-                <button id="copy-btn" class="btn">Copiar Mensaje</button>
-                <button id="whatsapp-btn" class="btn btn-whatsapp">Compartir por WhatsApp</button>
-            </div>
-        </div>
+        <textarea id="datos-cuenta" rows="5" placeholder="DATOS DE SU PANTALLA NETFLIX: CORREO: angiangan17@gcatower.com CLAVE: g1902492 Perfil: 1 PIN: 2064"></textarea>
+        <button onclick="generarMensaje()">Generar y Copiar Mensaje</button>
+        <div id="mensaje-generado" style="display: none;"></div>
+        <div id="frase-motivacional" style="display: none;"></div>
     </div>
 
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            const serviceSelect = document.getElementById('service');
-            const customServiceGroup = document.getElementById('custom-service-group');
-            const customServiceInput = document.getElementById('custom-service');
-            const accountDataInput = document.getElementById('account-data');
-            const generateBtn = document.getElementById('generate-btn');
-            const resultContainer = document.getElementById('result-container');
-            const generatedMessage = document.getElementById('generated-message');
-            const copyBtn = document.getElementById('copy-btn');
-            const whatsappBtn = document.getElementById('whatsapp-btn');
-            
-            // Mostrar/ocultar campo para servicio personalizado
-            serviceSelect.addEventListener('change', function() {
-                if (this.value === 'Otro') {
-                    customServiceGroup.style.display = 'block';
-                } else {
-                    customServiceGroup.style.display = 'none';
-                }
-            });
-            
-            // Generar el mensaje
-            generateBtn.addEventListener('click', function() {
-                if (!accountDataInput.value.trim()) {
-                    alert('Por favor ingresa los datos de la cuenta');
-                    return;
-                }
-                
-                const service = serviceSelect.value === 'Otro' 
-                    ? customServiceInput.value.trim() || 'Servicio no especificado'
-                    : serviceSelect.value;
-                
-                const today = new Date();
-                const deliveryDate = formatDate(today);
-                
-                const expirationDate = new Date(today);
-                expirationDate.setDate(expirationDate.getDate() + 30);
-                const expirationDateFormatted = formatDate(expirationDate);
-                
-                const message = `📋 *DATOS DE LA CUENTA* 📋\n\n` +
-                                 `🔹 *Servicio:* ${getServiceEmoji(service)} ${service}\n\n` +
-                                 `🔑 *Datos de acceso:*\n${formatAccountData(accountDataInput.value)}\n\n` +
-                                 `📅 *Fechas importantes:*\n` +
-                                 `   🚀 Entrega: ${deliveryDate}\n` +
-                                 `   ⏳ Vencimiento: ${expirationDateFormatted}\n\n` +
-                                 `⚠️ *Indicaciones importantes:*\n` +
-                                 `   📱 Usar en un solo dispositivo o pierde la cuenta.\n` +
-                                 `   🙏 Gracias por preferirnos.\n` +
-                                 `   💰 Vende y gana.\n\n` +
-                                 `🔒 Por seguridad, no compartas estos datos con terceros.`;
-                
-                generatedMessage.textContent = message;
-                resultContainer.style.display = 'block';
-                
-                // Desplazarse al resultado
-                resultContainer.scrollIntoView({ behavior: 'smooth' });
-            });
-            
-            // Copiar mensaje al portapapeles
-            copyBtn.addEventListener('click', function() {
-                const range = document.createRange();
-                range.selectNode(generatedMessage);
-                window.getSelection().removeAllRanges();
-                window.getSelection().addRange(range);
-                document.execCommand('copy');
-                window.getSelection().removeAllRanges();
-                
-                // Cambiar texto temporalmente para confirmar
-                const originalText = copyBtn.textContent;
-                copyBtn.textContent = '¡Copiado! ✅';
-                setTimeout(() => {
-                    copyBtn.textContent = originalText;
-                }, 2000);
-            });
-            
-            // Compartir por WhatsApp
-            whatsappBtn.addEventListener('click', function() {
-                const message = generatedMessage.textContent;
-                const encodedMessage = encodeURIComponent(message);
-                window.open(`https://wa.me/?text=${encodedMessage}`, '_blank');
-            });
-            
-            // Función para formatear la fecha
-            function formatDate(date) {
-                const day = date.getDate();
-                const month = date.getMonth() + 1;
-                const year = date.getFullYear();
-                return `${day < 10 ? '0' + day : day}/${month < 10 ? '0' + month : month}/${year}`;
+        const frasesMotivacionales = [
+            "El éxito es la suma de pequeños esfuerzos repetidos día tras día.",
+            "Cree en ti mismo y en todo lo que eres. Reconoce que hay algo dentro de ti que es más grande que cualquier obstáculo.",
+            "No esperes por el momento perfecto, toma el momento y hazlo perfecto.",
+            "El único modo de hacer un gran trabajo es amar lo que haces.",
+            "Hoy es una nueva oportunidad para alcanzar tus metas. ¡A por ella!",
+            "La perseverancia puede transformar el fracaso en un logro extraordinario.",
+            "Tu actitud determina tu dirección.",
+            "Cada día es un paso hacia tus sueños.",
+            "La motivación te impulsa a comenzar, el hábito te permite continuar.",
+            "Las oportunidades no ocurren, se crean."
+        ];
+
+        function obtenerFraseAleatoria() {
+            const indice = Math.floor(Math.random() * frasesMotivacionales.length);
+            return frasesMotivacionales[indice];
+        }
+
+        function generarMensaje() {
+            const datosCuentaTextarea = document.getElementById("datos-cuenta");
+            const mensajeGeneradoDiv = document.getElementById("mensaje-generado");
+            const fraseMotivacionalDiv = document.getElementById("frase-motivacional");
+            const datosCuenta = datosCuentaTextarea.value.trim();
+
+            if (!datosCuenta) {
+                alert("Por favor, ingresa los datos de la cuenta.");
+                return;
             }
-            
-            // Función para obtener emoji según el servicio
-            function getServiceEmoji(service) {
-                const emojis = {
-                    'Netflix': '🎬',
-                    'Amazon Prime': '🛒',
-                    'Disney+': '🏰',
-                    'HBO Max': '🍿',
-                    'Spotify': '🎵',
-                    'YouTube Premium': '▶️',
-                    'default': '📺'
-                };
-                
-                for (const [key, emoji] of Object.entries(emojis)) {
-                    if (service.includes(key)) return emoji;
-                }
-                return emojis.default;
-            }
-            
-            // Función para formatear los datos de la cuenta
-            function formatAccountData(data) {
-                // Separar en líneas y agregar emoji de bullet point
-                return data.split('\n')
-                    .filter(line => line.trim() !== '')
-                    .map(line => `   • ${line.trim()}`)
-                    .join('\n');
-            }
-        });
+
+            const lineas = datosCuenta.split(':').map(linea => linea.trim());
+            const servicio = lineas[0].split(' ')[4] || "SERVICIO"; // Extrae el servicio
+            const correo = lineas[1];
+            const clave = lineas[3];
+            const perfil = lineas[5];
+            const pin = lineas[7];
+
+            const fechaEntrega = new Date();
+            const opcionesFecha = { year: 'numeric', month: 'long', day: 'numeric' };
+            const fechaEntregaFormateada = fechaEntrega.toLocaleDateString('es-VE', opcionesFecha);
+
+            const proximaRenovacion = new Date();
+            proximaRenovacion.setDate(proximaRenovacion.getDate() + 30); // Suponiendo renovación mensual
+            const proximaRenovacionFormateada = proximaRenovacion.toLocaleDateString('es-VE', opcionesFecha);
+            const diaProximaRenovacion = proximaRenovacion.getDate();
+            const mesProximaRenovacion = proximaRenovacion.toLocaleDateString('es-VE', { month: 'long' });
+            const añoProximaRenovacion = proximaRenovacion.toLocaleDateString('es-VE', { year: 'numeric' });
+            const proximaRenovacionFinal = `${diaProximaRenovacion} de ${mesProximaRenovacion} de ${añoProximaRenovacion}`;
+
+            const mensaje = `*📺 DATOS DE SU PANTALLA ${servicio.toUpperCase()} 📺*\n\n` +
+                            `📧 *Correo:* ${correo}\n` +
+                            `🔑 *Clave:* ${clave}\n` +
+                            `👤 *Perfil activo:* ${perfil}\n` +
+                            `🔢 *PIN de seguridad:* ${pin}\n\n` +
+                            `📅 *Fecha de entrega:* Hoy, ${fechaEntregaFormateada}\n` +
+                            `🔄 *Próxima renovación:* ${proximaRenovacionFinal}\n\n` +
+                            `⚠️ *¡ ATENCIÓN!*\n` +
+                            `❌ *Solo 1 dispositivo activo a la vez* (si se usa en más, la cuenta se bloquea).\n\n` +
+                            `💰 *¡Vende y gana*\n` +
+                            `🙌 Gracias por confiar en nosotros. ¡Disfruta tu ${servicio}!`;
+
+            const fraseMotivacional = obtenerFraseAleatoria();
+
+            mensajeGeneradoDiv.textContent = mensaje;
+            mensajeGeneradoDiv.style.display = "block";
+            fraseMotivacionalDiv.textContent = fraseMotivacional;
+            fraseMotivacionalDiv.style.display = "block";
+
+            // Copiar al portapapeles (incluyendo la frase motivacional)
+            const mensajeCompleto = mensaje + "\n\n" + fraseMotivacional;
+            navigator.clipboard.writeText(mensajeCompleto).then(() => {
+                alert("¡Mensaje con ambos logos y frase copiado al portapapeles!");
+            }).catch(err => {
+                console.error('Error al copiar al portapapeles: ', err);
+                alert("No se pudo copiar el mensaje al portapapeles. Por favor, selecciónalo y cópialo manualmente.");
+            });
+        }
     </script>
 </body>
-</html># whatsapp
+</html>
